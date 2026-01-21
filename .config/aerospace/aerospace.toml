@@ -1,0 +1,184 @@
+# ==============================================================================
+# REGOLITH (i3) EXPERIENCE FOR MACOS
+# ==============================================================================
+
+# --- 1. GLOBAL SETTINGS ---
+config-version = 2
+start-at-login = true
+
+# VISUALS
+accordion-padding = 30
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+
+# BEHAVIOR
+automatically-unhide-macos-hidden-apps = false
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+# Disable flattening so manual 'split' commands work like i3.
+enable-normalization-flatten-containers = false
+enable-normalization-opposite-orientation-for-nested-containers = false
+
+# --- 2. GAPS (Regolith Style) ---
+[gaps]
+    inner.horizontal = 10
+    inner.vertical =   10
+    outer.left =       10
+    outer.bottom =     10
+    outer.top =        10
+    outer.right =      10
+
+# --- 3. WORKSPACE MONITOR ASSIGNMENTS ---
+# Forces Workspace 7 to the Laptop Screen ("built-in")
+[workspace-to-monitor-force-assignment]
+    7 = '^built-in.*' 
+
+# --- 4. APP RULES (Auto-Move Apps) ---
+# Note: app-id is case sensitive.
+
+# Google Chrome -> Workspace 7
+[[on-window-detected]]
+    if.app-id = 'com.google.Chrome'
+    run = 'move-node-to-workspace 7'
+
+# Alacritty -> Workspace 2
+[[on-window-detected]]
+    if.app-id = 'org.alacritty'
+    run = 'move-node-to-workspace 2'
+
+# Obsidian -> Workspace 3
+[[on-window-detected]]
+    if.app-id = 'md.obsidian'
+    run = 'move-node-to-workspace 3'
+
+# Viber -> Workspace 4
+[[on-window-detected]]
+    if.app-id = 'com.viber.mac'
+    run = 'move-node-to-workspace 4'
+
+# --- NEW ADDITIONS ---
+
+# VS Code -> Workspace 3
+[[on-window-detected]]
+    if.app-id = 'com.microsoft.VSCode'
+    run = 'move-node-to-workspace 3'
+
+# JetBrains IDEs -> Workspace 1
+# (Using regex '.*' to catch both Community/Professional versions)
+[[on-window-detected]]
+    if.app-id = 'com.jetbrains.pycharm.*'
+    run = 'move-node-to-workspace 1'
+
+[[on-window-detected]]
+    if.app-id = 'com.jetbrains.PhpStorm'
+    run = 'move-node-to-workspace 1'
+
+[[on-window-detected]]
+    if.app-id = 'com.jetbrains.CLion'
+    run = 'move-node-to-workspace 1'
+
+# ==============================================================================
+# 5. KEY BINDINGS
+# ==============================================================================
+[mode.main.binding]
+
+    # --- System & Apps ---
+    
+    # Smart Alacritty Launcher
+    alt-enter = '''exec-and-forget sh -c '
+        if ! pgrep -x "Alacritty" > /dev/null; then
+            open -a Alacritty
+        else
+            open -a Alacritty
+            osascript -e "tell application \"System Events\" to keystroke \"n\" using command down"
+        fi
+    ' '''
+
+    # Chrome Launcher (New Window)
+    alt-shift-enter = 'exec-and-forget open -na "Google Chrome" --args --new-window'
+    
+    alt-shift-c = 'reload-config'
+
+    # --- Window Management ---
+    
+    alt-shift-q = 'close'
+    
+    # Focus (Vim keys)
+    alt-h = 'focus left'
+    alt-j = 'focus down'
+    alt-k = 'focus up'
+    alt-l = 'focus right'
+    
+    # Move Windows
+    alt-shift-h = 'move left'
+    alt-shift-j = 'move down'
+    alt-shift-k = 'move up'
+    alt-shift-l = 'move right'
+
+    # --- Layout / Splits (i3 Style) ---
+    alt-b = 'split horizontal'
+    alt-v = 'split vertical'
+    
+    alt-f = 'fullscreen'
+    alt-shift-space = 'layout floating tiling'
+    
+    # Switch layout styles
+    alt-e = 'layout tiles horizontal vertical'
+    alt-w = 'layout accordion horizontal vertical'
+
+    # --- Workspaces ---
+    alt-1 = 'workspace 1'
+    alt-2 = 'workspace 2'
+    alt-3 = 'workspace 3'
+    alt-4 = 'workspace 4'
+    alt-5 = 'workspace 5'
+    alt-6 = 'workspace 6'
+    alt-7 = 'workspace 7'
+    alt-8 = 'workspace 8'
+    alt-9 = 'workspace 9'
+    alt-0 = 'workspace 10'
+    
+    # Move to Workspace
+    alt-shift-1 = 'move-node-to-workspace 1'
+    alt-shift-2 = 'move-node-to-workspace 2'
+    alt-shift-3 = 'move-node-to-workspace 3'
+    alt-shift-4 = 'move-node-to-workspace 4'
+    alt-shift-5 = 'move-node-to-workspace 5'
+    alt-shift-6 = 'move-node-to-workspace 6'
+    alt-shift-7 = 'move-node-to-workspace 7'
+    alt-shift-8 = 'move-node-to-workspace 8'
+    alt-shift-9 = 'move-node-to-workspace 9'
+    alt-shift-0 = 'move-node-to-workspace 10'
+
+    alt-tab = 'workspace-back-and-forth'
+
+    # --- Resize Mode ---
+    alt-r = 'mode resize'
+    
+    # --- Service Mode ---
+    alt-shift-semicolon = 'mode service'
+
+# ==============================================================================
+# RESIZE MODE
+# ==============================================================================
+[mode.resize.binding]
+    h = 'resize width -50'
+    j = 'resize height +50'
+    k = 'resize height -50'
+    l = 'resize width +50'
+    enter = 'mode main'
+    esc = 'mode main'
+    backspace = 'mode main'
+
+# ==============================================================================
+# SERVICE MODE
+# ==============================================================================
+[mode.service.binding]
+    esc = ['reload-config', 'mode main']
+    r = ['flatten-workspace-tree', 'mode main']
+    backspace = ['close-all-windows-but-current', 'mode main']
+    
+    alt-shift-h = ['join-with left', 'mode main']
+    alt-shift-j = ['join-with down', 'mode main']
+    alt-shift-k = ['join-with up', 'mode main']
+    alt-shift-l = ['join-with right', 'mode main']
