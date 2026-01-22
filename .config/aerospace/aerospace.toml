@@ -21,12 +21,12 @@ enable-normalization-opposite-orientation-for-nested-containers = false
 
 # --- 2. GAPS (Regolith Style) ---
 [gaps]
-    inner.horizontal = 10
-    inner.vertical =   10
-    outer.left =       10
-    outer.bottom =     10
-    outer.top =        10
-    outer.right =      10
+    inner.horizontal = 7
+    inner.vertical =   7
+    outer.left =       7
+    outer.bottom =     7
+    outer.top =        7
+    outer.right =      7
 
 # --- 3. WORKSPACE MONITOR ASSIGNMENTS ---
 # Forces Workspace 7 to the Laptop Screen ("built-in")
@@ -55,8 +55,6 @@ enable-normalization-opposite-orientation-for-nested-containers = false
 [[on-window-detected]]
     if.app-id = 'com.viber.mac'
     run = 'move-node-to-workspace 4'
-
-# --- NEW ADDITIONS ---
 
 # VS Code -> Workspace 3
 [[on-window-detected]]
