@@ -21,12 +21,12 @@ enable-normalization-opposite-orientation-for-nested-containers = false
 
 # --- 2. GAPS (Regolith Style) ---
 [gaps]
-    inner.horizontal = 7
-    inner.vertical =   7
-    outer.left =       7
-    outer.bottom =     7
-    outer.top =        7
-    outer.right =      7
+    inner.horizontal = 4
+    inner.vertical =   4
+    outer.left =       4
+    outer.bottom =     4
+    outer.top =        4
+    outer.right =      4
 
 # --- 3. WORKSPACE MONITOR ASSIGNMENTS ---
 # Forces Workspace 7 to the Laptop Screen ("built-in")
