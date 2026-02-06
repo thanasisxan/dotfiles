@@ -36,44 +36,51 @@ enable-normalization-opposite-orientation-for-nested-containers = false
 # --- 4. APP RULES (Auto-Move Apps) ---
 # Note: app-id is case sensitive.
 
-# Google Chrome -> Workspace 7
+# Google Chrome -> Workspace 1
 [[on-window-detected]]
     if.app-id = 'com.google.Chrome'
-    run = 'move-node-to-workspace 7'
+    run = 'move-node-to-workspace 1'
+
+# VS Code -> Workspace 2
+[[on-window-detected]]
+    if.app-id = 'com.microsoft.VSCode'
+    run = 'move-node-to-workspace 2'
+
+# JetBrains IDEs -> Workspace 2
+[[on-window-detected]]
+    if.app-id = 'com.jetbrains.pycharm.*'
+    run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+    if.app-id = 'com.jetbrains.PhpStorm'
+    run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+    if.app-id = 'com.jetbrains.CLion'
+    run = 'move-node-to-workspace 2'
 
 # Alacritty -> Workspace 2
 [[on-window-detected]]
     if.app-id = 'org.alacritty'
     run = 'move-node-to-workspace 2'
 
-# Obsidian -> Workspace 3
+# Obsidian & Notion -> Workspace 3
 [[on-window-detected]]
     if.app-id = 'md.obsidian'
     run = 'move-node-to-workspace 3'
 
-# Viber -> Workspace 4
+[[on-window-detected]]
+    if.app-id = 'notion.id'
+    run = 'move-node-to-workspace 3'
+
+# Viber & Mail -> Workspace 4
 [[on-window-detected]]
     if.app-id = 'com.viber.mac'
     run = 'move-node-to-workspace 4'
 
-# VS Code -> Workspace 3
 [[on-window-detected]]
-    if.app-id = 'com.microsoft.VSCode'
-    run = 'move-node-to-workspace 3'
-
-# JetBrains IDEs -> Workspace 1
-# (Using regex '.*' to catch both Community/Professional versions)
-[[on-window-detected]]
-    if.app-id = 'com.jetbrains.pycharm.*'
-    run = 'move-node-to-workspace 1'
-
-[[on-window-detected]]
-    if.app-id = 'com.jetbrains.PhpStorm'
-    run = 'move-node-to-workspace 1'
-
-[[on-window-detected]]
-    if.app-id = 'com.jetbrains.CLion'
-    run = 'move-node-to-workspace 1'
+    if.app-id = 'com.apple.mail'
+    run = 'move-node-to-workspace 4'
 
 # ==============================================================================
 # 5. KEY BINDINGS
