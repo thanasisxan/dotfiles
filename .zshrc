@@ -25,7 +25,7 @@ fi
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 
-plugins=(git ssh docker docker-compose history rsync ssh-agent)
+plugins=(git ssh docker docker-compose history rsync ssh-agent stripe)
 
 # ssh-agent plugin config
 zstyle :omz:plugins:ssh-agent lazy yes
@@ -43,7 +43,7 @@ export LANG=en_US.UTF-8
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='nvim'
+  export EDITOR='code --wait'
 fi
 
 # -----------------------------------------------------------------------------
@@ -83,3 +83,5 @@ fi
 # Aliases
 # -----------------------------------------------------------------------------
 alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
+alias lg="lazygit"
+alias ld="lazydocker"
