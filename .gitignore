@@ -1,0 +1,3 @@
+# Never commit SSH keys: only the config file is tracked
+.ssh/*
+!.ssh/config
