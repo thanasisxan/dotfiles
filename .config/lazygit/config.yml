@@ -1,3 +1,12 @@
 # Open files from lazygit (e / o) in VS Code; commit messages still use nvim via $EDITOR
 os:
   editPreset: "vscode"
+
+# JetBrains dark accents (matches nvim jb theme)
+gui:
+  theme:
+    activeBorderColor: ["#3574F0", "bold"]
+    inactiveBorderColor: ["#43454A"]
+    selectedLineBgColor: ["#214283"]
+    optionsTextColor: ["#3574F0"]
+    searchingActiveBorderColor: ["#E5BF00", "bold"]

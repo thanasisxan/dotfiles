@@ -1,3 +1,7 @@
+[general]
+# JetBrains dark colors, from jb.nvim extras (matches nvim)
+import = ["~/.config/alacritty/jb-dark.toml"]
+
 [env]
 TERM = "xterm-256color"
 

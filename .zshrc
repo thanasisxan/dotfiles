@@ -47,6 +47,9 @@ export VISUAL='nvim'
 # Same lazygit config path on macOS and Linux
 export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
 
+# fzf colors (JetBrains dark, from jb.nvim extras)
+export FZF_DEFAULT_OPTS_FILE="$HOME/.config/fzf/jb-dark.fzfrc"
+
 # -----------------------------------------------------------------------------
 # PATH additions (cross-platform)
 # -----------------------------------------------------------------------------
