@@ -41,5 +41,21 @@ Don't install the same tool through both apt and brew; the brew one wins on PATH
 
 ## Machine-local files (untracked)
 
+Nothing identity- or machine-specific is in this repo (it's public). Each machine has:
+
+- `~/.gitconfig.local`: **git name/email** (required: git refuses to commit without it), plus e.g. the macOS Meld difftool path
+- `~/.ssh/config.local`: machine-specific SSH hosts and keys (work servers, a work GitHub key)
 - `~/.zshrc.local`: secrets, per-machine env
-- `~/.gitconfig.local`: e.g. the macOS Meld difftool path
+
+## Updating a machine that already uses this repo
+
+```sh
+cd ~/dotfiles
+git status            # must be clean; commit or stash local edits first
+git pull
+stow -n -v .          # dry run: lists new links and any conflicts, changes nothing
+```
+
+If the dry run reports conflicts (an existing real file where a link would go), move each one aside, e.g. `mv ~/.gitconfig ~/.gitconfig.bak`, then `stow -v .` and copy what that machine needs from the `.bak` into the matching `*.local` file. stow never overwrites real files on its own. **Never use `stow --adopt`**: it pulls the machine's files into the repo.
+
+Then check identity before committing anything: `git config user.email`.

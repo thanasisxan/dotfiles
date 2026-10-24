@@ -1,6 +1,8 @@
+# Shared across machines. Identity (name/email, signing) lives in the
+# untracked ~/.gitconfig.local so personal and work never mix.
 [user]
-	name = Thanasis Xanthopoulos
-	email = thanasis.xanthop@gmail.com
+	# Refuse to commit until ~/.gitconfig.local sets user.name/user.email
+	useConfigOnly = true
 [diff]
 	tool = meld
 [difftool]
@@ -8,6 +10,5 @@
 [core]
 	editor = nvim
 	autocrlf = input
-# Machine-specific overrides (untracked), e.g. the macOS Meld path
 [include]
 	path = ~/.gitconfig.local
