@@ -13,7 +13,31 @@ mkdir -p -m 700 ~/.ssh
 cd ~/dotfiles && stow .
 ```
 
-Install tools with `brew bundle --file ~/dotfiles/Brewfile` (Homebrew works on Linux too). Also: oh-my-zsh, Claude Code (native installer), Alacritty (macOS: GitHub releases dmg, since the brew cask is disabled; Linux: distro package). On Linux install the JetBrainsMono Nerd Font manually.
+## Installing tools
+
+### macOS
+
+```sh
+brew bundle --file ~/dotfiles/Brewfile
+```
+
+Plus: oh-my-zsh, Claude Code (native installer), Alacritty (GitHub releases dmg; the brew cask is disabled).
+
+### Linux (Debian/Ubuntu)
+
+Base system from apt, Homebrew only for tools where apt is too old (neovim for LazyVim, lazygit, lazydocker).
+
+```sh
+sudo apt install zsh tmux git stow curl file procps build-essential alacritty
+chsh -s "$(command -v zsh)"
+
+# Homebrew (https://brew.sh), then the Brewfile; casks are skipped on Linux
+brew bundle --file ~/dotfiles/Brewfile
+```
+
+Plus: oh-my-zsh, Claude Code (native installer), Docker from Docker's own apt repo, JetBrainsMono Nerd Font into `~/.local/share/fonts`.
+
+Don't install the same tool through both apt and brew; the brew one wins on PATH.
 
 ## Machine-local files (untracked)
 
