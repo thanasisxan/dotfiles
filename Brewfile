@@ -31,7 +31,7 @@ brew "php"
 
 if OS.mac?
   # --- Apps ---
-  cask "alacritty"
+  # Alacritty: cask disabled 2026-09 (fails Gatekeeper); install from GitHub releases
   cask "visual-studio-code"
   cask "meld"
   cask "bruno"

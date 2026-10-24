@@ -13,7 +13,7 @@ mkdir -p -m 700 ~/.ssh
 cd ~/dotfiles && stow .
 ```
 
-Install tools with `brew bundle --file ~/dotfiles/Brewfile` (Homebrew works on Linux too). Also: oh-my-zsh, Claude Code (native installer). On Linux install the JetBrainsMono Nerd Font manually.
+Install tools with `brew bundle --file ~/dotfiles/Brewfile` (Homebrew works on Linux too). Also: oh-my-zsh, Claude Code (native installer), Alacritty (macOS: GitHub releases dmg, since the brew cask is disabled; Linux: distro package). On Linux install the JetBrainsMono Nerd Font manually.
 
 ## Machine-local files (untracked)
 
