@@ -1,0 +1,3 @@
+# Open files from lazygit (e / o) in VS Code; commit messages still use nvim via $EDITOR
+os:
+  editPreset: "vscode"

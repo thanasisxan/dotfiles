@@ -40,11 +40,12 @@ source $ZSH/oh-my-zsh.sh
 # -----------------------------------------------------------------------------
 export LANG=en_US.UTF-8
 
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='code --wait'
-fi
+# nvim for quick in-terminal edits; VS Code is for browsing (see lazygit config)
+export EDITOR='nvim'
+export VISUAL='nvim'
+
+# Same lazygit config path on macOS and Linux
+export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
 
 # -----------------------------------------------------------------------------
 # PATH additions (cross-platform)
@@ -63,6 +64,22 @@ elif [[ "$OS" == "linux" ]]; then
   [[ -d "$HOME/.local/share/JetBrains/Toolbox/scripts" ]] && \
     export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
 fi
+
+# Java & Android SDK
+if [[ "$OS" == "macos" ]]; then
+  JAVA_HOME="$(/usr/libexec/java_home -v 17 2>/dev/null)" && export JAVA_HOME
+  export ANDROID_HOME="$HOME/Library/Android/sdk"
+elif [[ "$OS" == "linux" ]]; then
+  export ANDROID_HOME="$HOME/Android/Sdk"
+fi
+if [[ -d "$ANDROID_HOME" ]]; then
+  export PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools"
+fi
+
+# -----------------------------------------------------------------------------
+# Machine-local overrides (untracked: secrets, per-machine paths)
+# -----------------------------------------------------------------------------
+[[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
 
 # -----------------------------------------------------------------------------
 # Docker completions

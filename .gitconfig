@@ -1,0 +1,13 @@
+[user]
+	name = Thanasis Xanthopoulos
+	email = thanasis.xanthop@gmail.com
+[diff]
+	tool = meld
+[difftool]
+	prompt = false
+[core]
+	editor = nvim
+	autocrlf = input
+# Machine-specific overrides (untracked), e.g. the macOS Meld path
+[include]
+	path = ~/.gitconfig.local
