@@ -13,7 +13,7 @@ mkdir -p -m 700 ~/.ssh
 cd ~/dotfiles && stow .
 ```
 
-Needs: `stow zsh tmux nvim lazygit lazydocker`, oh-my-zsh, JetBrainsMono Nerd Font.
+Install tools with `brew bundle --file ~/dotfiles/Brewfile` (Homebrew works on Linux too). Also: oh-my-zsh, Claude Code (native installer). On Linux install the JetBrainsMono Nerd Font manually.
 
 ## Machine-local files (untracked)
 
