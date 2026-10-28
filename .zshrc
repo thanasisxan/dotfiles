@@ -82,6 +82,9 @@ if [[ -d "$ANDROID_HOME" ]]; then
   export PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools"
 fi
 
+# Go
+command -v go >/dev/null && export PATH="$PATH:$(go env GOPATH)/bin"
+
 # -----------------------------------------------------------------------------
 # Machine-local overrides (untracked: secrets, per-machine paths)
 # -----------------------------------------------------------------------------
