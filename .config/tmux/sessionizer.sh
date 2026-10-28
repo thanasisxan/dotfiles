@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Pick a project with fzf, then switch to its tmux session (created if missing).
-# Works from inside tmux (prefix f) or from a plain shell.
+# Works from inside tmux (prefix F) or from a plain shell.
 
 selected=$(
   {
