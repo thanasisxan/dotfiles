@@ -39,6 +39,22 @@ Plus: oh-my-zsh, Claude Code (native installer), Docker from Docker's own apt re
 
 Don't install the same tool through both apt and brew; the brew one wins on PATH.
 
+## Claude Code in tmux
+
+Window names show Claude's state (`claude●:repo` working, `claude!:repo` waiting on you), and windows running Claude get a pane header with its current task. Claude Code hooks drive this through `~/.config/tmux/claude-state.sh`. `~/.claude/settings.json` isn't in this repo (it holds machine state), so on a new machine merge this into it:
+
+```json
+"hooks": {
+  "SessionStart":      [{ "hooks": [{ "type": "command", "async": true, "command": "~/.config/tmux/claude-state.sh start" }] }],
+  "UserPromptSubmit":  [{ "hooks": [{ "type": "command", "async": true, "command": "~/.config/tmux/claude-state.sh working" }] }],
+  "PostToolUse":       [{ "matcher": "*", "hooks": [{ "type": "command", "async": true, "command": "~/.config/tmux/claude-state.sh working" }] }],
+  "PermissionRequest": [{ "matcher": "*", "hooks": [{ "type": "command", "async": true, "command": "~/.config/tmux/claude-state.sh input" }] }],
+  "PreToolUse":        [{ "matcher": "AskUserQuestion", "hooks": [{ "type": "command", "async": true, "command": "~/.config/tmux/claude-state.sh input" }] }],
+  "Stop":              [{ "hooks": [{ "type": "command", "async": true, "command": "~/.config/tmux/claude-state.sh idle" }] }],
+  "SessionEnd":        [{ "hooks": [{ "type": "command", "async": true, "command": "~/.config/tmux/claude-state.sh end" }] }]
+}
+```
+
 ## Machine-local files (untracked)
 
 Nothing identity- or machine-specific is in this repo (it's public). Each machine has:
