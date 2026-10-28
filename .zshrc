@@ -50,6 +50,9 @@ export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
 # fzf colors (JetBrains dark, from jb.nvim extras)
 export FZF_DEFAULT_OPTS_FILE="$HOME/.config/fzf/jb-dark.fzfrc"
 
+# fzf key bindings (Ctrl-R history, Ctrl-T files, Alt-C cd) and completion
+command -v fzf >/dev/null && source <(fzf --zsh)
+
 # -----------------------------------------------------------------------------
 # PATH additions (cross-platform)
 # -----------------------------------------------------------------------------
