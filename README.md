@@ -10,6 +10,9 @@ git clone git@github.com:thanasisxan/dotfiles.git ~/dotfiles
 # Create ~/.ssh first so stow links only the config file, not the whole folder
 mkdir -p -m 700 ~/.ssh
 
+# Same for herdr: its folder also holds sockets and logs, so only config.toml is linked
+mkdir -p ~/.config/herdr
+
 cd ~/dotfiles && stow .
 ```
 

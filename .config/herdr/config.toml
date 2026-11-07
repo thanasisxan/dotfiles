@@ -1,0 +1,6 @@
+onboarding = false
+
+# herdr runs inside tmux (prefix C-b), so herdr gets its own prefix.
+# All other keys are herdr defaults. prefix+? shows them.
+[keys]
+prefix = "ctrl+space"
